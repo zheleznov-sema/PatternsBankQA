@@ -1,0 +1,1 @@
+[![Java CI](https://github.com/zheleznov-sema/PatternsBankQA/actions/workflows/gradle.yml/badge.svg)](https://github.com/zheleznov-sema/PatternsBankQA/actions/workflows/gradle.yml)
