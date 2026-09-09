@@ -1,7 +1,6 @@
 package ru.netology;
 
 import com.github.javafaker.Faker;
-import com.google.gson.Gson;
 
 import java.util.Locale;
 
@@ -14,27 +13,11 @@ public class DataGenerator {
     private DataGenerator() {
     }
 
-    public static RegistrationDto getRegisteredUser() {
+    public static RegistrationDto getUser(String status) {
         return new RegistrationDto(
                 faker.name().username(),
                 faker.internet().password(),
-                "active"
-        );
-    }
-
-    public static RegistrationDto getBlockedUser() {
-        return new RegistrationDto(
-                faker.name().username(),
-                faker.internet().password(),
-                "blocked"
-        );
-    }
-
-    public static RegistrationDto getUnregisteredUser() {
-        return new RegistrationDto(
-                faker.name().username(),
-                faker.internet().password(),
-                "active"
+                status
         );
     }
 
@@ -46,7 +29,7 @@ public class DataGenerator {
         given()
                 .baseUri("http://localhost:9999")
                 .header("Content-Type", "application/json")
-                .body(new Gson().toJson(user))
+                .body(user)
                 .when()
                 .post("/api/system/users")
                 .then()
